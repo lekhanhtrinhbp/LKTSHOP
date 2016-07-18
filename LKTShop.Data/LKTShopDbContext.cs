@@ -10,7 +10,7 @@ namespace LKTShop.Data
 {
     public class LKTShopDbContext : DbContext
     {
-        public LKTShopDbContext() : base("")
+        public LKTShopDbContext() : base("LKTShop")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

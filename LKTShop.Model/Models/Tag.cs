@@ -7,7 +7,7 @@ namespace LKTShop.Model.Models
     public class Tag
     {
         [Key]
-        [MaxLength(50)]
+        [MaxLength(50), Column(TypeName = "varchar")]
         public string ID { set; get; }
 
         [MaxLength(50)]
