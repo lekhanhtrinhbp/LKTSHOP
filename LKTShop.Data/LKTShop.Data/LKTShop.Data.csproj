@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{477B7FCE-FD3F-4AE2-BD61-0184835D9C33}</ProjectGuid>
+    <ProjectGuid>{0431A557-781E-40AF-8F10-AFBDEF7F9C39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LKTShop.Model</RootNamespace>
-    <AssemblyName>LKTShop.Model</AssemblyName>
+    <RootNamespace>LKTShop.Data</RootNamespace>
+    <AssemblyName>LKTShop.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,44 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LKTShop.Model\Abstract\Auditable.cs" />
-    <Compile Include="LKTShop.Model\Abstract\IAuditable.cs" />
-    <Compile Include="LKTShop.Model\Models\Footer.cs" />
-    <Compile Include="LKTShop.Model\Models\Menu.cs" />
-    <Compile Include="LKTShop.Model\Models\MenuGroup.cs" />
-    <Compile Include="LKTShop.Model\Models\Order.cs" />
-    <Compile Include="LKTShop.Model\Models\OrderDetail.cs" />
-    <Compile Include="LKTShop.Model\Models\Product.cs" />
-    <Compile Include="LKTShop.Model\Models\ProductCategory.cs" />
-    <Compile Include="LKTShop.Model\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="LKTShop.Model\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="LKTShop.Model\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="LKTShop.Model\Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="LKTShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="LKTShop.Model\App.config" />
-    <None Include="LKTShop.Model\bin\Debug\LKTShop.Model.dll.config" />
-    <None Include="LKTShop.Model\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="LKTShop.Model\obj\Debug\LKTShop.Model.csprojResolveAssemblyReference.cache" />
-    <None Include="LKTShop.Model\packages.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.dll" />
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.SqlServer.dll" />
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.SqlServer.xml" />
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.xml" />
-    <Content Include="LKTShop.Model\bin\Debug\LKTShop.Model.dll" />
-    <Content Include="LKTShop.Model\bin\Debug\LKTShop.Model.pdb" />
-    <Content Include="LKTShop.Model\LKTShop.Model.csproj" />
-    <Content Include="LKTShop.Model\obj\Debug\LKTShop.Model.csproj.FileListAbsolute.txt" />
-    <Content Include="LKTShop.Model\obj\Debug\LKTShop.Model.dll" />
-    <Content Include="LKTShop.Model\obj\Debug\LKTShop.Model.pdb" />
+    <ProjectReference Include="..\LKTShop.Common\LKTShop.Common.csproj">
+      <Project>{7e3b6d2e-f3d5-48a6-893e-3fb80c7c350f}</Project>
+      <Name>LKTShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LKTShop.Model\LKTShop.Model.csproj">
+      <Project>{477b7fce-fd3f-4ae2-bd61-0184835d9c33}</Project>
+      <Name>LKTShop.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LKTShop.Model\obj\Debug\TempPE\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
