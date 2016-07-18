@@ -6,7 +6,7 @@ namespace LKTShop.Model.Models
     [Table("Footers")]
     public class Footer
     {
-        [Key, MaxLength(50)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]

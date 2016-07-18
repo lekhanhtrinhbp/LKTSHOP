@@ -20,7 +20,7 @@ namespace LKTShop.Data.Infrastructure
         // Get an entity by id
         T GetSingleById(int Id);
         // Get entity by condition
-        T GetSingleByCondition(Expression<Func<T,bool>> expresstion, string includes = null);
+        T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null);
         IQueryable<T> GetAll(string[] includes = null);
 
         IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null);

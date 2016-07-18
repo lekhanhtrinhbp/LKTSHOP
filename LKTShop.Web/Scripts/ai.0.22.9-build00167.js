@@ -1141,7 +1141,7 @@ var AI;
             this.userStoreRegion = "ai.user.storeRegion";
             this.userAuthUserId = "ai.user.authUserId";
             this.userAnonymousUserAcquisitionDate = "ai.user.anonUserAcquisitionDate";
-            this.userAuthenticatedUserAcquisitionDate = "ai.user.authUserAcquisitionDate";
+            this.userAuthenticaLKTserAcquisitionDate = "ai.user.authUserAcquisitionDate";
             this.sampleRate = "ai.sample.sampleRate";
             this.cloudName = "ai.cloud.name";
             this.cloudRoleVer = "ai.cloud.roleVer";
@@ -1491,14 +1491,14 @@ var Microsoft;
                         }
                     }
                 }
-                User.prototype.setAuthenticatedUserContext = function (authenticatedUserId, accountId) {
-                    var isInvalidInput = !this.validateUserInput(authenticatedUserId) || (accountId && !this.validateUserInput(accountId));
+                User.prototype.setAuthenticaLKTserContext = function (authenticaLKTserId, accountId) {
+                    var isInvalidInput = !this.validateUserInput(authenticaLKTserId) || (accountId && !this.validateUserInput(accountId));
                     if (isInvalidInput) {
                         ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_SetAuthContextFailedAccountName, "Setting auth user context failed. " +
                             "User auth/account id should be of type string, and not contain commas, semi-colons, equal signs, spaces, or vertical-bars."));
                         return;
                     }
-                    this.authenticatedId = authenticatedUserId;
+                    this.authenticatedId = authenticaLKTserId;
                     var authCookie = this.authenticatedId;
                     if (accountId) {
                         this.accountId = accountId;
@@ -1506,7 +1506,7 @@ var Microsoft;
                     }
                     ApplicationInsights.Util.setCookie(User.authUserCookieName, encodeURI(authCookie), this.config.cookieDomain());
                 };
-                User.prototype.clearAuthenticatedUserContext = function () {
+                User.prototype.clearAuthenticaLKTserContext = function () {
                     this.authenticatedId = null;
                     this.accountId = null;
                     ApplicationInsights.Util.deleteCookie(User.authUserCookieName);
@@ -3238,17 +3238,17 @@ var Microsoft;
                     ApplicationInsights._InternalLogging.throwInternalNonUserActionable(ApplicationInsights.LoggingSeverity.CRITICAL, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.NONUSRACT_FlushFailed, "flush failed, telemetry will not be collected: " + ApplicationInsights.Util.getExceptionName(e), { exception: ApplicationInsights.Util.dump(e) }));
                 }
             };
-            AppInsights.prototype.setAuthenticatedUserContext = function (authenticatedUserId, accountId) {
+            AppInsights.prototype.setAuthenticaLKTserContext = function (authenticaLKTserId, accountId) {
                 try {
-                    this.context.user.setAuthenticatedUserContext(authenticatedUserId, accountId);
+                    this.context.user.setAuthenticaLKTserContext(authenticaLKTserId, accountId);
                 }
                 catch (e) {
                     ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_SetAuthContextFailed, "Setting auth user context failed. " + ApplicationInsights.Util.getExceptionName(e), { exception: ApplicationInsights.Util.dump(e) }));
                 }
             };
-            AppInsights.prototype.clearAuthenticatedUserContext = function () {
+            AppInsights.prototype.clearAuthenticaLKTserContext = function () {
                 try {
-                    this.context.user.clearAuthenticatedUserContext();
+                    this.context.user.clearAuthenticaLKTserContext();
                 }
                 catch (e) {
                     ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_SetAuthContextFailed, "Clearing auth user context failed. " + ApplicationInsights.Util.getExceptionName(e), { exception: ApplicationInsights.Util.dump(e) }));

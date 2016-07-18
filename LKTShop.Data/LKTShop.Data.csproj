@@ -49,29 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LKTShop.Data\Infrastructure\DbFactory.cs" />
-    <Compile Include="LKTShop.Data\Infrastructure\Disposable.cs" />
-    <Compile Include="LKTShop.Data\Infrastructure\IDbFactory.cs" />
-    <Compile Include="LKTShop.Data\Infrastructure\IRepository.cs" />
-    <Compile Include="LKTShop.Data\Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="LKTShop.Data\Infrastructure\RepositoryBase.cs" />
-    <Compile Include="LKTShop.Data\Infrastructure\UnitOfWork.cs" />
-    <Compile Include="LKTShop.Data\LKTShopDbContext.cs" />
-    <Compile Include="LKTShop.Data\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="LKTShop.Data\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="LKTShop.Data\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="LKTShop.Data\Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="LKTShopDbContext.cs" />
+    <Compile Include="Migrations\201607180833198_InitialDB.cs" />
+    <Compile Include="Migrations\201607180833198_InitialDB.Designer.cs">
+      <DependentUpon>201607180833198_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ProductCategoryRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="LKTShop.Data\App.config" />
-    <None Include="LKTShop.Data\bin\Debug\LKTShop.Data.dll.config" />
-    <None Include="LKTShop.Data\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="LKTShop.Data\obj\Debug\LKTShop.Data.csprojResolveAssemblyReference.cache" />
-    <None Include="LKTShop.Data\packages.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,28 +78,14 @@
       <Name>LKTShop.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\LKTShop.Model\LKTShop.Model.csproj">
-      <Project>{477B7FCE-FD3F-4AE2-BD61-0184835D9C33}</Project>
+      <Project>{477b7fce-fd3f-4ae2-bd61-0184835d9c33}</Project>
       <Name>LKTShop.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LKTShop.Data\bin\Debug\EntityFramework.dll" />
-    <Content Include="LKTShop.Data\bin\Debug\EntityFramework.SqlServer.dll" />
-    <Content Include="LKTShop.Data\bin\Debug\EntityFramework.SqlServer.xml" />
-    <Content Include="LKTShop.Data\bin\Debug\EntityFramework.xml" />
-    <Content Include="LKTShop.Data\bin\Debug\LKTShop.Common.dll" />
-    <Content Include="LKTShop.Data\bin\Debug\LKTShop.Common.pdb" />
-    <Content Include="LKTShop.Data\bin\Debug\LKTShop.Data.dll" />
-    <Content Include="LKTShop.Data\bin\Debug\LKTShop.Data.pdb" />
-    <Content Include="LKTShop.Data\LKTShop.Data.csproj" />
-    <Content Include="LKTShop.Data\obj\Debug\LKTShop.Data.csproj.FileListAbsolute.txt" />
-    <Content Include="LKTShop.Data\obj\Debug\LKTShop.Data.dll" />
-    <Content Include="LKTShop.Data\obj\Debug\LKTShop.Data.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LKTShop.Data\bin\Release\" />
-    <Folder Include="LKTShop.Data\obj\Debug\TempPE\" />
-    <Folder Include="LKTShop.Data\Repositories\" />
+    <EmbeddedResource Include="Migrations\201607180833198_InitialDB.resx">
+      <DependentUpon>201607180833198_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -49,44 +49,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LKTShop.Model\Abstract\Auditable.cs" />
-    <Compile Include="LKTShop.Model\Abstract\IAuditable.cs" />
-    <Compile Include="LKTShop.Model\Models\Footer.cs" />
-    <Compile Include="LKTShop.Model\Models\Menu.cs" />
-    <Compile Include="LKTShop.Model\Models\MenuGroup.cs" />
-    <Compile Include="LKTShop.Model\Models\Order.cs" />
-    <Compile Include="LKTShop.Model\Models\OrderDetail.cs" />
-    <Compile Include="LKTShop.Model\Models\Product.cs" />
-    <Compile Include="LKTShop.Model\Models\ProductCategory.cs" />
-    <Compile Include="LKTShop.Model\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="LKTShop.Model\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="LKTShop.Model\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="LKTShop.Model\Properties\AssemblyInfo.cs" />
+    <Compile Include="Abstract\Auditable.cs" />
+    <Compile Include="Abstract\IAuditable.cs" />
+    <Compile Include="Models\Footer.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuGroup.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Page.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostCategory.cs" />
+    <Compile Include="Models\PostTag.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\ProductTag.cs" />
+    <Compile Include="Models\Slide.cs" />
+    <Compile Include="Models\SupportOnline.cs" />
+    <Compile Include="Models\SystemConfig.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\VisitorStatistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="LKTShop.Model\App.config" />
-    <None Include="LKTShop.Model\bin\Debug\LKTShop.Model.dll.config" />
-    <None Include="LKTShop.Model\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="LKTShop.Model\obj\Debug\LKTShop.Model.csprojResolveAssemblyReference.cache" />
-    <None Include="LKTShop.Model\packages.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.dll" />
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.SqlServer.dll" />
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.SqlServer.xml" />
-    <Content Include="LKTShop.Model\bin\Debug\EntityFramework.xml" />
-    <Content Include="LKTShop.Model\bin\Debug\LKTShop.Model.dll" />
-    <Content Include="LKTShop.Model\bin\Debug\LKTShop.Model.pdb" />
-    <Content Include="LKTShop.Model\LKTShop.Model.csproj" />
-    <Content Include="LKTShop.Model\obj\Debug\LKTShop.Model.csproj.FileListAbsolute.txt" />
-    <Content Include="LKTShop.Model\obj\Debug\LKTShop.Model.dll" />
-    <Content Include="LKTShop.Model\obj\Debug\LKTShop.Model.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LKTShop.Model\obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
