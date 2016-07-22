@@ -18,6 +18,8 @@ namespace LKTShop.Service
         IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
         Post GetById(int id);
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
+        IEnumerable<Post> GetAllByCategoryIdPaging(int categoryId, int page, int pageSize, out int totalRow);
+        void SaveChanges();
     }
     public class PostService : IPostService
     {
@@ -40,27 +42,38 @@ namespace LKTShop.Service
 
         public IEnumerable<Post> GetAll()
         {
-            return this._postRepository.GetAll();
+            return this._postRepository.GetAll(new string[]{ "PostCategory"});
+        }
+
+        public IEnumerable<Post> GetAllByCategoryIdPaging(int categoryId, int page, int pageSize, out int totalRow)
+        {
+            return this._postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, page, pageSize, out totalRow, new string[] { "PostCategory" });
         }
 
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
-            return this._postRepository.GetMultiPaging();
+            //TODO: select all post by tag
+            return this._postRepository.GetAllByTag(tag, page, pageSize,out totalRow);
         }
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return this._postRepository.GetMultiPaging();
+            return this._postRepository.GetMultiPaging(x => x.Status, page, pageSize, out totalRow);
         }
 
         public Post GetById(int id)
         {
-            throw new NotImplementedException();
+            return this._postRepository.GetSingleById(id);
+        }
+
+        public void SaveChanges()
+        {
+            this._unitOfWork.Commit();
         }
 
         public void Update(Post post)
         {
-            throw new NotImplementedException();
+            this._postRepository.Update(post);
         }
     }
 }
