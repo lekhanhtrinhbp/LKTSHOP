@@ -14,7 +14,7 @@ namespace LKTShop.Service
         void Add(PostCategory postCategory);
         void Update(PostCategory postCategory);
         void delete(int id);
-        IEnumerable<PostCategory> GetAll(int page, int pageSize, out int totalRow);
+        IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParenId(int parentId,int page, int pageSize, out int totalRow);
         PostCategory GetById(int id);
     }
@@ -23,34 +23,39 @@ namespace LKTShop.Service
         IPostCategoryRepository _postCategoryRepository;
         IUnitOfWork _unitOfWork;
 
+        public PostCategoryService(IPostCategoryRepository postCategoryRepository, IUnitOfWork unitOfWork)
+        {
+            this._postCategoryRepository = postCategoryRepository;
+            this._unitOfWork = unitOfWork;
+        }
         public void Add(PostCategory postCategory)
         {
-            throw new NotImplementedException();
+            this._postCategoryRepository.Add(postCategory);
         }
 
         public void delete(int id)
         {
-            throw new NotImplementedException();
+            this._postCategoryRepository.Delete(id);
         }
 
-        public IEnumerable<PostCategory> GetAll(int page, int pageSize, out int totalRow)
+        public IEnumerable<PostCategory> GetAll()
         {
-            throw new NotImplementedException();
+            return this._postCategoryRepository.GetAll();
         }
 
         public IEnumerable<PostCategory> GetAllByParenId(int parentId, int page, int pageSize, out int totalRow)
         {
-            throw new NotImplementedException();
+            return this._postCategoryRepository.GetMultiPaging( x => x.Status && x.ParentID == parentId, page, pageSize, out totalRow);
         }
 
         public PostCategory GetById(int id)
         {
-            throw new NotImplementedException();
+            return this._postCategoryRepository.GetSingleById(id);
         }
 
         public void Update(PostCategory postCategory)
         {
-            throw new NotImplementedException();
+            this._postCategoryRepository.Update(postCategory);
         }
     }
 }
