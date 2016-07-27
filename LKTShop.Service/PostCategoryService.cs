@@ -11,9 +11,9 @@ namespace LKTShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory postCategory);
+        PostCategory Add(PostCategory postCategory);
         void Update(PostCategory postCategory);
-        void delete(int id);
+        PostCategory delete(int id);
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParenId(int parentId,int page, int pageSize, out int totalRow);
         PostCategory GetById(int id);
@@ -28,14 +28,14 @@ namespace LKTShop.Service
             this._postCategoryRepository = postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            this._postCategoryRepository.Add(postCategory);
+            return this._postCategoryRepository.Add(postCategory);
         }
 
-        public void delete(int id)
+        public PostCategory delete(int id)
         {
-            this._postCategoryRepository.Delete(id);
+            return this._postCategoryRepository.Delete(id);
         }
 
         public IEnumerable<PostCategory> GetAll()
@@ -45,7 +45,7 @@ namespace LKTShop.Service
 
         public IEnumerable<PostCategory> GetAllByParenId(int parentId, int page, int pageSize, out int totalRow)
         {
-            return this._postCategoryRepository.GetMultiPaging( x => x.Status && x.ParentID == parentId, page, pageSize, out totalRow);
+            return this._postCategoryRepository.GetMultiPaging( x => x.Status && x.ParentID == parentId,out totalRow, page, pageSize );
         }
 
         public PostCategory GetById(int id)

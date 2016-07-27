@@ -47,7 +47,7 @@ namespace LKTShop.Service
 
         public IEnumerable<Post> GetAllByCategoryIdPaging(int categoryId, int page, int pageSize, out int totalRow)
         {
-            return this._postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, page, pageSize, out totalRow, new string[] { "PostCategory" });
+            return this._postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize,  new string[] { "PostCategory" });
         }
 
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
@@ -58,7 +58,7 @@ namespace LKTShop.Service
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return this._postRepository.GetMultiPaging(x => x.Status, page, pageSize, out totalRow);
+            return this._postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
         }
 
         public Post GetById(int id)
