@@ -26,17 +26,10 @@ namespace LKTShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage m_Response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var m_ListPostCategory = _postCategoryService.GetAll();
-                    _postCategoryService.Save();
-                    m_Response = request.CreateResponse(HttpStatusCode.Created, m_ListPostCategory);
-                }
+                var m_ListPostCategory = _postCategoryService.GetAll();
+                _postCategoryService.Save();
+                HttpResponseMessage m_Response = request.CreateResponse(HttpStatusCode.Created, m_ListPostCategory);
+
                 return m_Response;
             });
 
@@ -46,13 +39,13 @@ namespace LKTShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage m_Response = null;
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest,ModelState);
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                   var m_PostCategory = _postCategoryService.Add(postCategory);
+                    var m_PostCategory = _postCategoryService.Add(postCategory);
                     _postCategoryService.Save();
                     m_Response = request.CreateResponse(HttpStatusCode.Created, postCategory);
                 }
