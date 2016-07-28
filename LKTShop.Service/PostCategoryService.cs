@@ -17,6 +17,7 @@ namespace LKTShop.Service
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParenId(int parentId,int page, int pageSize, out int totalRow);
         PostCategory GetById(int id);
+        void Save();
     }
     public class PostCategoryService : IPostCategoryService
     {
@@ -51,6 +52,11 @@ namespace LKTShop.Service
         public PostCategory GetById(int id)
         {
             return this._postCategoryRepository.GetSingleById(id);
+        }
+
+        public void Save()
+        {
+            this._unitOfWork.Commit();
         }
 
         public void Update(PostCategory postCategory)

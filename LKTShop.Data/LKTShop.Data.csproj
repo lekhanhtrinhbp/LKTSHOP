@@ -61,7 +61,16 @@
     <Compile Include="Migrations\201607180833198_InitialDB.Designer.cs">
       <DependentUpon>201607180833198_InitialDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607270406454_addABCTable.cs" />
+    <Compile Include="Migrations\201607270406454_addABCTable.Designer.cs">
+      <DependentUpon>201607270406454_addABCTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607270412130_addErrorTable.cs" />
+    <Compile Include="Migrations\201607270412130_addErrorTable.Designer.cs">
+      <DependentUpon>201607270412130_addErrorTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\ErrorRepostiory.cs" />
     <Compile Include="Repositories\OrderDetailRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\PageRepository.cs" />
@@ -100,6 +109,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607180833198_InitialDB.resx">
       <DependentUpon>201607180833198_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607270406454_addABCTable.resx">
+      <DependentUpon>201607270406454_addABCTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607270412130_addErrorTable.resx">
+      <DependentUpon>201607270412130_addErrorTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
