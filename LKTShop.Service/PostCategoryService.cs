@@ -13,7 +13,7 @@ namespace LKTShop.Service
     {
         PostCategory Add(PostCategory postCategory);
         void Update(PostCategory postCategory);
-        PostCategory delete(int id);
+        PostCategory Delete(int id);
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParenId(int parentId,int page, int pageSize, out int totalRow);
         PostCategory GetById(int id);
@@ -34,7 +34,7 @@ namespace LKTShop.Service
             return this._postCategoryRepository.Add(postCategory);
         }
 
-        public PostCategory delete(int id)
+        public PostCategory Delete(int id)
         {
             return this._postCategoryRepository.Delete(id);
         }
