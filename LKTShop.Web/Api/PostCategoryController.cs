@@ -1,6 +1,8 @@
-﻿using LKTShop.Model.Models;
+﻿using AutoMapper;
+using LKTShop.Model.Models;
 using LKTShop.Service;
 using LKTShop.Web.Infragstructure.Core;
+using LKTShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using LKTShop.Web.Infragstructure.Extensions;
 
 namespace LKTShop.Web.Api
 {
@@ -27,14 +30,16 @@ namespace LKTShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var m_ListPostCategory = _postCategoryService.GetAll();
+                var listCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(m_ListPostCategory);
                 _postCategoryService.Save();
-                HttpResponseMessage m_Response = request.CreateResponse(HttpStatusCode.Created, m_ListPostCategory);
+                HttpResponseMessage m_Response = request.CreateResponse(HttpStatusCode.Created, listCategoryVm);
 
                 return m_Response;
             });
 
         }
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -45,15 +50,18 @@ namespace LKTShop.Web.Api
                 }
                 else
                 {
-                    var m_PostCategory = _postCategoryService.Add(postCategory);
+                    var newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+                    var m_PostCategory = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
-                    m_Response = request.CreateResponse(HttpStatusCode.Created, postCategory);
+                    m_Response = request.CreateResponse(HttpStatusCode.Created, m_PostCategory);
                 }
                 return m_Response;
             });
 
         }
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -64,7 +72,9 @@ namespace LKTShop.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
 
                     m_Response = request.CreateResponse(HttpStatusCode.OK);
@@ -72,7 +82,7 @@ namespace LKTShop.Web.Api
                 return m_Response;
             });
         }
-        public HttpResponseMessage Put(HttpRequestMessage request, int id)
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
